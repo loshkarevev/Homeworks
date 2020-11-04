@@ -1,0 +1,45 @@
+1
+Создал папку mkdir -p /opt/node_exporter
+Скачал curl -LO "https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz"
+Распаковал tar -xvzf ~/node_exporter-1.0.1.linux-amd64.tar.gz
+Скопировал cp ~/node_exporter-1.0.1.linux-amd64/node_exporter /opt/node_exporter
+Создал файл touch /etc/systemd/system/node_exporter.service
+Добавил описание
+[Unit]
+Description=Node Exporter
+ 
+[Service]
+ExecStart=/opt/node_exporter/node_exporter
+ 
+[Install]
+WantedBy=default.target
+
+Выполняем еще часть комманд
+sudo systemctl daemon-reload
+sudo systemctl enable node_exporter.service
+sudo systemctl start node_exporter.service
+
+Эта команда показывает, что все ок: systemctl status node_exporter.service
+
+2
+CPU - node_cpu_seconds_total{cpu="0",mode="user"}; node_cpu_seconds_total{cpu="0",mode="system"}; node_cpu_seconds_total{cpu="0",mode="iowait"};
+Память - process_resident_memory_bytes; node_memory_MemFree_bytes; node_memory_Cached_bytes; node_memory_Buffers_bytes
+Диск - node_disk_io_time_weighted_seconds_total
+Сеть - node_network_receive_bytes_total; node_network_transmit_bytes_total
+
+3
+Установил, ознакомился
+
+4
+Да, погрепал по vir и Vir
+
+5
+1048576
+Кол-во открытых файлов. ulimit -n
+
+6
+https://yadi.sk/d/twDUdJabB5jgrQ?w=1
+
+7
+Определяет функцию с именем : , которая дважды вызывает саму себя (код: : | : ). Он делает это в фоновом режиме ( &). После ; определение функции выполнено, и функция : запускается
+По умолчанию 3582, изменить можно ulimit -u 50
