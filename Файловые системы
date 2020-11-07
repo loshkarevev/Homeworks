@@ -1,0 +1,52 @@
+1
+Ознакомился
+
+2
+Нет. Права выдаются на объект, а не на имя.
+
+3
+Выполнил
+
+4
+fdisk /dev/sdb
+
+5
+sfdisk -d /dev/sdb | sfdisk /dev/sdc
+
+6
+mdadm --create -v /dev/md1 --raid-devices=2 --level=0 /dev/sdb2 /dev/sdc2
+
+7
+mdadm --create -v /dev/md0 --raid-devices=2 --level=1 /dev/sdb1 /dev/sdc1
+
+8
+pvcreate /dev/md0
+pvcreate /dev/md1
+
+9
+vgcreate ws /dev/md0 /dev/md1
+
+10
+lvcreate -n usr -L100M ws /dev/md1
+
+11
+mkfs.ext4 -L usr /dev/ws/usr
+
+12
+mkdir /tmp/new
+mount /dev/ws/usr /tmp/new
+
+13
+wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz
+
+14
+https://fex.net/ru/s/6vkybvs
+
+16
+pvmove /dev/md1 /dev/md0
+
+17
+mdadm --fail /dev/md0 /dev/sdb1
+
+18
+https://fex.net/ru/s/6vkybvs
