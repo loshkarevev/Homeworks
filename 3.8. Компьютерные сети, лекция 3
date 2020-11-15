@@ -1,7 +1,9 @@
 1
-
+Потому что еще не истекло время ожидания соединения.
+http://www.austintek.com/LVS/LVS-HOWTO/HOWTO/LVS-HOWTO.ipvsadm.html#ActiveConn
 
 2
-
+Необходимо подробней написать, что необходимо сделать.
 
 3
+Необходимо 3 VIP.
