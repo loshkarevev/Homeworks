@@ -3,7 +3,99 @@
 http://www.austintek.com/LVS/LVS-HOWTO/HOWTO/LVS-HOWTO.ipvsadm.html#ActiveConn
 
 2
-Необходимо подробней написать, что необходимо сделать.
+Доработал vagrantfile
+boxes = {
+  'netology1' => '10',
+  'netology2' => '20',
+  'netology3' => '21',
+  'netology4' => '30',
+  'netology5' => '31',
+}
+
+Vagrant.configure("2") do |config|
+  config.vm.network "private_network", virtualbox__intnet: true, auto_config: false
+  config.vm.box = "bento/ubuntu-20.04"
+
+  boxes.each do |k, v|
+    config.vm.define k do |node|
+      node.vm.provision "shell" do |s|
+        s.inline = "hostname $1;"\
+          "ip addr add $2 dev eth1;"\
+          "ip link set dev eth1 up;"\
+		  "mkdir /etc/gcrypt;"\
+			"echo all >> /etc/gcrypt/hwf.deny;"\
+		  "sudo apt-get update;"\
+          "sudo apt-get install -y nginx;"\
+		  "sudo apt-get install -y keepalived;"\
+		  "sudo apt-get install -y ipvsadm;"
+        s.args = [k, "172.28.128.#{v}/24"]
+      end
+    end
+  end
+
+end
+
+netology2 keepalived.conf
+
+vrrp_instance proxy_ip1 {
+state MASTER
+interface eth1
+virtual_router_id 1
+priority 104
+virtual_ipaddress {
+172.28.128.200/24 dev eth1 label eth1:200
+}
+}
+virtual_server 172.28.128.200 80 {
+   lvs_sched rr
+   lvs_method DR
+   protocol TCP
+   delay_loop 5
+   real_server 172.28.128.30 80 {
+       weight 1
+       TCP_CHECK {
+           connect_timeout 2
+       }
+   }
+   real_server 172.28.128.31 80 {
+       weight 1
+       TCP_CHECK {
+           connect_timeout 2
+       }
+   }
+
+netology3 keepalived.conf
+
+vrrp_instance proxy_ip1 {
+state MASTER
+interface eth1
+virtual_router_id 1
+priority 103
+virtual_ipaddress {
+172.28.128.200/24 dev eth1 label eth1:200
+}
+}
+virtual_server 172.28.128.200 80 {
+   lvs_sched rr
+   lvs_method DR
+   protocol TCP
+   delay_loop 5
+   real_server 172.28.128.30 80 {
+       weight 1
+       TCP_CHECK {
+           connect_timeout 2
+       }
+   }
+   real_server 172.28.128.31 80 {
+       weight 1
+       TCP_CHECK {
+           connect_timeout 2
+       }
+   }
+
+На клиенте отправил запрос 1.png
+На веб сервисах получил 2.png, 3.png 
+https://fex.net/ru/s/sax2ktf
 
 3
 Необходимо 3 VIP.
