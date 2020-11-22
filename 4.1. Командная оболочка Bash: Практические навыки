@@ -41,4 +41,5 @@ do
 		else
 		exit
 		fi
+	done
 done
