@@ -13,5 +13,8 @@
 
 2
 docker pull loshkarev/hey_netology
+Делал по этим статьям:
+https://www.tecmint.com/install-apache-web-server-in-a-docker-container/
+https://www.scalyr.com/blog/create-docker-image/
 
 3
