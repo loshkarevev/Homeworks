@@ -12,3 +12,6 @@
 •	Jenkins-сервер. – докер, Классическое кейс для докера.
 
 2
+docker pull loshkarev/hey_netology
+
+3
