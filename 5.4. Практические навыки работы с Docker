@@ -22,6 +22,7 @@ RUN yum install jenkins java-1.8.0-openjdk-devel -y
 CMD ["/bin/bash"]
 
 Запускаю с такими параметрами: docker run -p 8080:8080 -p 50000:50000 -w /usr/lib/jenkins/ -i -t image_jenkins_a java -jar jenkins.war
+docker push loshkarev/image_jenkins_a:tagname
 
 dockerfile2:
 FROM f63181f19b2f
@@ -41,5 +42,6 @@ RUN cd /usr/share/jenkins/
 CMD ["/bin/bash"]
 
 Запускаю с такими параметрами: docker run -p 8080:8080 -p 50000:50000 -w /usr/share/jenkins/ -i -t image_jenkins java -jar jenkins.war
+docker push loshkarev/image_jenkins_u:tagname
 
 Скриншот один, т.к. они ничем не отличается https://fex.net/ru/s/ty2kz61 
