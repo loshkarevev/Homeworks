@@ -1,5 +1,6 @@
 1
 dockerfile:
+FROM 63b567e6380d
 RUN yes | pacman -Suy -y
 yes | pacman -Syu ponysay
 ENTRYPOINT ["/usr/bin/ponysay"]
