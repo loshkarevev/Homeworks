@@ -6,8 +6,40 @@ yes | pacman -Syu ponysay
 ENTRYPOINT ["/usr/bin/ponysay"]
 CMD ["Hey, netology"]
 
-https://fex.net/ru/s/madncpy
+Скриншот https://fex.net/ru/s/madncpy
 
 docker push loshkarev/image_pony:tagname
 
 2
+dockerfile1:
+FROM aa8ccb46044c
+RUN yum install wget -y
+RUN wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+RUN rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+RUN yum upgrade
+RUN yum install jenkins java-1.8.0-openjdk-devel -y
+CMD ["/bin/bash"]
+
+Запускаю с такими параметрами: docker run -p 8080:8080 -p 50000:50000 -w /usr/lib/jenkins/ -i -t image_jenkins_a java -jar jenkins.war
+
+dockerfile2:
+FROM f63181f19b2f
+ENV TZ=Europe/Moscow
+RUN apt-get update && apt-get install -yy tzdata
+RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update
+RUN apt install wget -y
+RUN apt-get install gnupg -y
+RUN wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | apt-key add -
+RUN echo "deb https://pkg.jenkins.io/debian binary/" >> /etc/apt/sources.list
+RUN apt-get update
+RUN apt-get install jenkins -y
+RUN apt search openjdk
+RUN apt install openjdk-11-jdk -y
+RUN cd /usr/share/jenkins/
+CMD ["/bin/bash"]
+
+Запускаю с такими параметрами: docker run -p 8080:8080 -p 50000:50000 -w /usr/share/jenkins/ -i -t image_jenkins java -jar jenkins.war
+
+Скриншот один, т.к. они ничем не отличается https://fex.net/ru/s/ty2kz61 
