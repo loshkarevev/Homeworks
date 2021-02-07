@@ -6,7 +6,7 @@ docker run --rm --name pg-docker -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432 
 
 2
 2.1, 2.2 Скриншот: https://fex.net/ru/s/pmrlcfv
-2.3 select * from pg_database;
+2.3 select * from information_schema.table_privileges where grantee in ('test-admin-user','test-simple-user');
 
 Делал этими командами:
 CREATE DATABASE test_db
