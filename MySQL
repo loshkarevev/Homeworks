@@ -31,3 +31,11 @@ GRANT Select ON test_db.orders TO 'test'@'localhost';
 SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER='test';
 
 3
+Используется: InnoDB;
+Продолжительность на MyISAM: 14
+Продолжительность на InnoDB: 12
+
+Пользовался этими командами
+SET profiling = 1;
+ALTER TABLE orders ENGINE = MyISAM;
+ALTER TABLE orders ENGINE = InnoDB;
