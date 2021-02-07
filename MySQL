@@ -15,3 +15,19 @@ docker exec -it 436a0bf52f63 mysql -uroot -p
 SELECT count(*) from orders where price > 300
 
 2
+CREATE USER 'test'@'localhost' IDENTIFIED BY 'test-pass';
+
+ALTER USER 'test'@'localhost' ATTRIBUTE '{"fname":"James", "lname":"Pretty"}';
+
+ALTER USER 'test'@'localhost' 
+IDENTIFIED BY 'test-pass' 
+WITH
+	MAX_QUERIES_PER_HOUR 100
+	PASSWORD EXPIRE INTERVAL 180 DAY
+	FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 2;
+	
+GRANT Select ON test_db.orders TO 'test'@'localhost';
+
+SELECT * FROM INFORMATION_SCHEMA.USER_ATTRIBUTES WHERE USER='test';
+
+3
