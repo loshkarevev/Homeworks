@@ -1,0 +1,4 @@
+1
+docker pull mysql:8.0.23
+docker volume create v_MySQL
+docker run --rm --name mysql-docker -e MYSQL_ROOT_PASSWORD=mysql -ti -p 3306:3306 -v v_MySQL:/etc/mysql/ mysql:8.0.23
