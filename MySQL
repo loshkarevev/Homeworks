@@ -1,4 +1,17 @@
 1
+Версия БД: 8.0.23 MySQL Community Server - GPL
+количество записей с price > 300: 1
+
+Пользовался этими командами:
 docker pull mysql:8.0.23
 docker volume create v_MySQL
 docker run --rm --name mysql-docker -e MYSQL_ROOT_PASSWORD=mysql -ti -p 3306:3306 -v v_MySQL:/etc/mysql/ mysql:8.0.23
+
+mysql -u root -p test_db < test_dump.sql
+
+docker exec -it 436a0bf52f63 mysql -uroot -p
+\s
+
+SELECT count(*) from orders where price > 300
+
+2
