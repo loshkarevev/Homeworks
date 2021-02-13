@@ -1,0 +1,34 @@
+1
+docker pull postgres:13
+docker volume create v_PostgreSQL
+docker run --rm --name pg-docker -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432 -v v_PostgreSQL:/var/lib/postgresql/data postgres:13
+docker exec -it cca49b150513 bash
+psql -h localhost -p 5432 -U postgres -W
+
+вывода списка БД - \l
+подключения к БД - \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo}
+вывода списка таблиц - \dt
+вывода описания содержимого таблиц - \d[S+]  NAME
+выхода из psql - \q
+
+2
+docker exec -it cca49b150513 bash
+psql -h localhost -p 5432 -U postgres -W
+CREATE DATABASE test_database;
+psql -f test.dump test_database
+\c test_database
+ANALYZE VERBOSE public.orders;
+select avg_width from pg_stats where tablename='orders'
+
+3
+alter table orders rename to orders_old;
+create table orders (id integer, title varchar(80), price integer) partition by range(price);
+insert into orders (id, title, price) select * from orders_old;	
+create table orders_less499 partition of orders for values from ('0') to ('499');
+create table orders_more499 partition of orders for values from ('500') to ('999999999');
+
+Можно было сразу создать таблицу с шардированием.
+
+4
+pg_dump test_database > test_database_backup
+CREATE INDEX ON orders ((lower(title)));
