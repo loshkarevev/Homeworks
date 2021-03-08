@@ -29,6 +29,9 @@ USER elasticsearch
 CMD ["/usr/sbin/init"]
 CMD ["/elasticsearch-7.11.1/bin/elasticsearch"]
 
+docker build -t loshkarev/centos_elastic -f dockerfile_centos .
+docker run --rm --name centos_e_d -ti -p 9200:9200 loshkarev/centos_elastic
+
 ссылку на образ в репозитории dockerhub:
 docker push loshkarev/centos_elastic:tagname
 
