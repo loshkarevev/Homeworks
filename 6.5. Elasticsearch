@@ -95,3 +95,67 @@ curl -X DELETE 'http://localhost:9200/ind-3?pretty'
 Индексы в статусе Yellow, т.к. у них указаны реплики, а по факту нет других серверов, соответственно реплицировать некуда.
 
 3
+Регистрация директории:
+curl -XPOST 127.0.0.1:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d'{"type": "fs", "settings": { "location":"/elasticsearch-7.11.1/snapshots" }}'
+
+Проверка:
+http://127.0.0.1:9200/_snapshot/netology_backup?pretty
+{
+  "netology_backup" : {
+    "type" : "fs",
+    "settings" : {
+      "location" : "/elasticsearch-7.11.1/snapshots"
+    }
+  }
+}
+
+Создаем индекс:
+curl -X PUT 127.0.0.1:9200/test -H 'Content-Type: application/json' -d'{ "settings": { "number_of_shards": 1,  "number_of_replicas": 0 }}'
+Проверка:
+http://127.0.0.1:9200/test?pretty
+{
+  "test" : {
+    "aliases" : { },
+    "mappings" : { },
+    "settings" : {
+      "index" : {
+        "routing" : {
+          "allocation" : {
+            "include" : {
+              "_tier_preference" : "data_content"
+            }
+          }
+        },
+        "number_of_shards" : "1",
+        "provided_name" : "test",
+        "creation_date" : "1615206317473",
+        "number_of_replicas" : "0",
+        "uuid" : "b1Z4BOx0Rz-f5WfTQYpSNA",
+        "version" : {
+          "created" : "7110199"
+        }
+      }
+    }
+  }
+}
+
+Создаем снэпшот:
+curl -X PUT localhost:9200/_snapshot/netology_backup/elasticsearch?wait_for_completion=true
+
+Cписок файлов в директории со snapshotами:
+[elasticsearch@a255abab5181 snapshots]$ pwd
+/elasticsearch-7.11.1/snapshots
+[elasticsearch@a255abab5181 snapshots]$ ls -a
+.  ..  index-0  index.latest  indices  meta-B9UueztCRzOtQIjVn0ZDQg.dat  snap-B9UueztCRzOtQIjVn0ZDQg.dat
+
+Удаление индекса:
+curl -X DELETE 'http://127.0.0.1:9200/test?pretty'
+
+Восстановление из бэкапа:
+curl -X POST 127.0.0.1:9200/_snapshot/netology_backup/elasticsearch/_restore?pretty -H 'Content-Type: application/json' -d'{"include_global_state":true}'
+
+Список индексов:
+curl -X GET http://127.0.0.1:9200/_cat/indices?v
+
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  HRrCymllQEaNPwUVRmba2w   1   0          0            0       208b           208b
