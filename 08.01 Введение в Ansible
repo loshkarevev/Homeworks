@@ -1,3 +1,5 @@
+https://github.com/loshkarevev/mnt-homeworks.git
+
 Где расположен файл с some_fact из второго пункта задания? - playbook/group_vars/deb/examp.yml
 Какая команда нужна для запуска вашего playbook на окружении test.yml? - ansible-playbook -i inventory/test.yml site.yml
 Какой командой можно зашифровать файл? - ansible-vault encrypt examp.yml
