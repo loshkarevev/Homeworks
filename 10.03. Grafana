@@ -1,0 +1,12 @@
+1
+https://fex.net/ru/s/eryrnxf
+
+2
+100 - (avg by (instance) (rate(node_cpu_seconds_total{job="node_localhost",mode="idle"}[1m])) * 100)
+node_cpu_seconds_total{cpu="0",mode="iowait"}
+node_memory_MemFree_bytes
+node_filesystem_size_bytes
+https://fex.net/ru/s/eryrnxf
+
+3, 4
+https://fex.net/ru/s/eryrnxf
