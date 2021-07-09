@@ -1,0 +1,20 @@
+1
+root@vagrant:~# minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+root@vagrant:~# kubectl get pods --namespace=kube-system
+NAME                              READY   STATUS    RESTARTS   AGE
+coredns-558bd4d5db-txc5h          1/1     Running   0          47m
+etcd-vagrant                      1/1     Running   0          47m
+kube-apiserver-vagrant            1/1     Running   0          47m
+kube-controller-manager-vagrant   1/1     Running   0          47m
+kube-proxy-hbvtm                  1/1     Running   0          47m
+kube-scheduler-vagrant            1/1     Running   0          47m
+storage-provisioner               1/1     Running   0          47m
+
+2
