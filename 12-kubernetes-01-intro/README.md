@@ -16,3 +16,4 @@
 
 3
 
+[kubectl get services.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-01-intro/kubectl%20get%20services.png)
