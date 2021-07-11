@@ -1,0 +1,8 @@
+kubectl create serviceaccount readonlyuser
+kubectl create clusterrole readonlyuser --verb=get --verb=list --verb=watch --resource=pods
+kubectl create clusterrolebinding readonlyuser --serviceaccount=default:readonlyuser --clusterrole=readonlyuser
+TOKEN=$(kubectl describe secrets "$(kubectl describe serviceaccount readonlyuser | grep -i Tokens | awk '{print $2}')" | grep token: | awk '{print $2}')
+kubectl config set-credentials user3 --token=$TOKEN
+kubectl config set-context podreader --cluster=minikube --user=user3
+
+Еще поправить kubectl -n default edit clusterrole readonlyuser на '*'
