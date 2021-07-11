@@ -10,3 +10,6 @@
 
 [nano config.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/nano%20config.png)
 
+И что под этим пользователем выполняются команды
+
+[logs_describe.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/logs_describe.png)
