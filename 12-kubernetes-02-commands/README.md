@@ -6,3 +6,7 @@
 [kubectl get.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/kubectl%20get.png)
 
 2
+Конфиг в котором видно добавленного пользователя user3
+
+[nano config.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/nano%20config.png)
+
