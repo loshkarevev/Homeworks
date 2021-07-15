@@ -1,4 +1,4 @@
-1
+#1
 
 Установил kubelet, kubeadm и kubectl по этой статье: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
@@ -6,7 +6,7 @@
 
 [kubectl get.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/kubectl%20get.png)
 
-2
+#2
 
 Конфиг в котором видно добавленного пользователя user3
 
@@ -16,7 +16,7 @@
 
 [logs_describe.png](https://github.com/loshkarevev/Homeworks/blob/main/12-kubernetes-02-commands/logs_describe.png)
 
-3
+#3
 
 Все в статусе running
 
