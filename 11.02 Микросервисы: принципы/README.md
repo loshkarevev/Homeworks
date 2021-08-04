@@ -1,20 +1,28 @@
 ## API Gateway
 Задание выполнено на основании [этой](https://www.nginx.com/blog/choosing-the-right-api-gateway-pattern/?__cf_chl_captcha_tk__=ed4062235a4eed746839ffaa4456039c320f9dec-1624120905-0-AYcP8ha43drdyJNKyF-DIGvZ1DR9YkX22Cl4O1eqj6VlImek5TI0LGefDCYx2x8nlce-REfCRIUyoqCAkDCcqNbjEPJCtKlCWPqty1WO-_5wzjjqkhHOIIP4GOQc-WRiQC4-XSYDvk_4svL_UsxTXQXtnach30UaMfB5o7Gf1AWSQtMK4FuNSBTxryzUZ4JAFyVrZVzzUWvWihqdKzk9otDOoK_kSzkjOTisu3XqYuBH6SsaiivUTx2TE20_hYQk4_URyMlzH7RhybZzZQL_KZakNAx2Aa5rBJt-ps0ETa_PZsEOgBBOv2MFeQu0DzaSqiLqnmboU47i38a0dKZg23_sq2wz7ULK3JZTSKsj6fIO-PTA-k_yncNs7odQNoL-hbaUsWor_aJX3cTcoDvok11rxniKHSQtkTKaGKgmi9s4SNft7kq6u0fkANzo77qLQQ7RJuwEAb5QuRba8ulZPQADD8vVC16JyY3aRET9DskxQg2T-1n6MGHjOtvjrNjhUojPMI0VU4oFjU7YqCvJyFdW-r4b43R2D3S6uOeJVNZjn4DbU-lKshHet4jd45PjgA0C7fANadJ9bstolosruifQyN_rWlRJiytg-yRLpZpxkFKEhRuC3C6R9JVbivKhP1gSc2OkLvKH8Fa4wk6QwIr03PSzA78Dnsb4JSE5MhvqaK_0XYqb95ZWYUKaFF40Jw) статьи.
 
-| Параметр\Тип | Централизованный шлюз | Двухуровневый шлюз | Микро шлюз | Шлюзы Per-Pod | Sidecar Gateways and Service Mesh |
+| Параметр\Тип | Централизованный шлюз | Двухуровневый шлюз | Микрошлюз | Шлюзы Per-Pod | Sidecar Gateways and Service Mesh |
 |---|---|---|---|---|---|
-| SSL/TLS termination | + | + | + | + | + |
-| Authentication | + | + |  | + | + |
-| Authorization | + | + |  |  | + |
-| Request routing | + |  | + |  |  |
-| Rate limiting | + |  | + | + |  |
-| Request/response manipulation | + |  |  |  |  |
+| Разгрузка от SSL/TLS | + | + | + | + | + |
+| Аутентификация | + | + |  | + | + |
+| Авторизация | + | + |  |  | + |
+| Маршрутизация запросов | + |  | + |  |  |
+| Ограничение скорости | + |  | + | + |  |
+| Манипуляция запросом / ответом | + |  |  |  |  |
 | Facade routing | + | + |  |  |  |
-| Centralized logging |  | + |  |  | + |
-| Tracing injection |  | + |  |  | + |
+| Централизованное логирование |  | + |  |  | + |
+| Отслеживание инъекций |  | + |  |  | + |
 | Service discovery |  | + | + |  | + |
-| Load balancing |  | + | + |  | + |
-| Authentication per API |  |  | + |  |  |
+| Балансировка нагрузки |  | + | + |  | + |
+| Аутентификация по API |  |  | + |  |  |
 | Tracing and metrics generation |  |  |  | + |  |
 | Error handling |  |  |  | + |  |
 | Inter‑service authentication |  |  |  |  | + |
+
+1. Централизованный шлюз - больше подходит для монолитных приложений с централизованным управлением;
+2. Двухуровневый шлюз - лучше всего работает в ситуациях, требующих гибкости для распределенных услуг и независимого масштабирования функций. Однако этот подход может вызвать проблемы, когда есть несколько команд, управляющих разными средами и приложениями, поскольку он не поддерживает распределенное управление;
+3. Микрошлюзы предназначены для работы вместе с микросервисами. Каждый отдельный микрошлюз может иметь различный набор политик.
+4. Шлюзы Per-Pod - шаблон шлюза для каждого модуля изменяет шаблон микрошлюза, встраивая прокси-шлюзы в отдельные модули или контейнеры. Шлюз управляет входящим трафиком в модуль, применяет такие политики, как аутентификация и ограничение скорости, а затем передает запрос в локальный микросервис.
+5. Sidecar Gateways and Service Mesh - позволяет службам напрямую взаимодействовать друг с другом с помощью параллельной обработки прокси-сервера и маршрутизации как входящей, так и исходящей связи. Он значительно усложняет управление.
+
+Учитывая поставновку задачи, нам подходит Микрошлюз и Шлюзы Per-Pod в сочетании с каким-либо шлюзом (1, 2, 3).
