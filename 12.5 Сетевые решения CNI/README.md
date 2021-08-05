@@ -9,7 +9,8 @@ kubectl get po --all-namespaces
 2. Убедились, что калико запустился ![get po.png](https://github.com/loshkarevev/Homeworks/blob/main/12.5%20%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20CNI/get%20po.png)
 3. По [этой](https://docs.projectcalico.org/security/tutorials/kubernetes-policy-basic) ссылке настраиваем политику доступа. В тело решения решил не копипастить, делал все команды один в один.
 Результат выполнения когда есть доступ:
-```root@node1:~# kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
+```
+root@node1:~# kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
 If you don't see a command prompt, try pressing enter.
 / # wget -q --timeout=5 nginx -O -
 <!DOCTYPE html>
@@ -40,14 +41,16 @@ Commercial support is available at
 / # 
 ```
 5. Результат выполнения когда нет доступа:
-```root@node1:~# kubectl run --namespace=policy-demo cant-access --rm -ti --image busybox /bin/sh
+```
+root@node1:~# kubectl run --namespace=policy-demo cant-access --rm -ti --image busybox /bin/sh
 If you don't see a command prompt, try pressing enter.
 / # wget -q --timeout=5 nginx -O -
 wget: download timed out
 ```
 6. Под также отображается ![get po+nginx.png](https://github.com/loshkarevev/Homeworks/blob/main/12.5%20%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20CNI/get%20po%2Bnginx.png)
 7. Вывод команд, который сказали сделать на лекции:
-```root@node1:~# calicoctl get nodes
+```
+root@node1:~# calicoctl get nodes
 NAME
 node1
 
