@@ -43,7 +43,8 @@ Commercial support is available at
 ```root@node1:~# kubectl run --namespace=policy-demo cant-access --rm -ti --image busybox /bin/sh
 If you don't see a command prompt, try pressing enter.
 / # wget -q --timeout=5 nginx -O -
-wget: download timed out```
+wget: download timed out
+```
 6. Под также отображается ![get po+nginx.png](https://github.com/loshkarevev/Homeworks/blob/main/12.5%20%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20CNI/get%20po%2Bnginx.png)
 7. Вывод команд, который сказали сделать на лекции:
 ```root@node1:~# calicoctl get nodes
