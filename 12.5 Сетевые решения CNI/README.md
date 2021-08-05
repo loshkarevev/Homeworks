@@ -8,7 +8,8 @@ kubectl get po --all-namespaces
 ```
 2. Убедились, что калико запустился ![get po.png](https://github.com/loshkarevev/Homeworks/blob/main/12.5%20%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20CNI/get%20po.png)
 3. По [этой](https://docs.projectcalico.org/security/tutorials/kubernetes-policy-basic) ссылке настраиваем политику доступа.
-4. ```root@node1:~# kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
+Результат выполнения команды в конце:
+```root@node1:~# kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
 If you don't see a command prompt, try pressing enter.
 / # wget -q --timeout=5 nginx -O -
 <!DOCTYPE html>
@@ -36,14 +37,15 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
-/ #
+/ # 
 ```
 5. Под также отображается ![get po+nginx.png](https://github.com/loshkarevev/Homeworks/blob/main/12.5%20%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D0%B5%20%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%20CNI/get%20po%2Bnginx.png)
-6. Вывод команд, который просили сделать на лекции:
+6. Вывод команд, который сказали сделать на лекции:
 ```root@node1:~# calicoctl get nodes
 NAME
 node1
 
 root@node1:~# calicoctl get ipPool
 NAME           CIDR             SELECTOR
-default-pool   10.233.64.0/18   all()```
+default-pool   10.233.64.0/18   all()
+```
