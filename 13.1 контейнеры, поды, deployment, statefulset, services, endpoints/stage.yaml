@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-back
+  labels:
+    app: frontback
+spec:
+  selector:
+    matchLabels:
+      app: frontback
+  template:
+    metadata:
+      labels:
+        app: frontback
+    spec:
+      containers:
+      - name: front
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+      - name: back
+        image: debian
+        command: ["sleep", "3600"]
