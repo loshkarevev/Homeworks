@@ -5,7 +5,6 @@
 2. 
 #### БД ([Статья](https://www.bmc.com/blogs/kubernetes-postgresql/))
 1. kubectl apply -f [postgresql.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/postgresql.yaml)
-2. kubectl apply -f [postgresql-service.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/postgresql-service.yaml)
 ```
 root@node1:~/kubespray# kubectl get statefulset
 NAME            READY   AGE
