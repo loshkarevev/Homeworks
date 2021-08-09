@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecommerce
+    tier: backend
+  name: product-be
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecommerce
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+        tier: backend
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_HOST
+          value: postgres
+        - name: DATABASE_NAME
+          value: product
+        - name: DATABASE_PASSWORD
+          value: pr0dr0b0t
+        - name: DATABASE_USER
+          value: product_robot
+        - name: DATABASE_PORT
+          value: "5432"
+        image: chrischinchilla/humanitech-product-be
+        imagePullPolicy: "IfNotPresent"
+        name: product-be
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ecommerce
+    tier: backend
+  name: product-be
+spec:
+  type: NodePort
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: ecommerce
+    tier: backend
