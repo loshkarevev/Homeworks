@@ -18,7 +18,7 @@ kind: PersistentVolumeClaim
 
 Выполнил kubectl apply -f pod-int-volumes.yaml
 
-Пишем в один под данные:
+Пишем в один контейнер данные:
 ```
 root@node1:~/kubespray# kubectl exec pod-int-volumes -c busybox -- ls -la /tmp/cache
 total 12
@@ -26,7 +26,7 @@ drwxrwxrwx    2 root     root          4096 Aug  9 16:34 .
 drwxrwxrwt    1 root     root          4096 Aug  9 16:26 ..
 -rw-r--r--    1 root     root             5 Aug  9 16:34 test.txt
 ```
-На втором поде читаем:
+На втором читаем:
 ```
 root@node1:~/kubespray# kubectl exec pod-int-volumes -c nginx -- ls -la /static
 total 12
