@@ -121,3 +121,27 @@ kubectl apply -f [front.yaml](https://github.com/loshkarevev/Homeworks/blob/main
 kubectl apply -f [back.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/back.yaml)
 #### БД
 kubectl apply -f [postgresql_prod.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/postgresql_prod.yaml)
+```
+Every 2.0s: kubectl get po --all-namespaces                                                                                   node1: Mon Aug  9 13:22:27 2021
+
+NAMESPACE     NAME                                       READY   STATUS              RESTARTS   AGE
+default       front-back-5b8f5b9c5b-98x5t                2/2     Running             2          136m
+default       nginx-deployment-66b6c48dd5-fm7wp          1/1     Running             0          142m
+default       postgres-0                                 0/1     ContainerCreating   0          5m2s
+default       postgresql-db-0                            0/1     ContainerCreating   0          128m
+default       product-be-56f584c9b7-b222q                1/1     Running             0          6m49s
+default       product-be-56f584c9b7-ffntb                1/1     Running             0          6m49s
+default       product-fe-56946dbfdc-k8fpp                1/1     Running             0          11m
+kube-system   calico-kube-controllers-5b4d7b4594-bjsn2   0/1     Shutdown            0          5d23h
+kube-system   calico-kube-controllers-5b4d7b4594-r9kq8   1/1     Running             5          24h
+kube-system   calico-node-vvcc5                          1/1     Running             125        5d23h
+kube-system   coredns-8474476ff8-dkbdn                   1/1     Running             6          5d23h
+kube-system   coredns-8474476ff8-x762p                   0/1     Pending             0          5d23h
+kube-system   dns-autoscaler-7df78bfcfb-87bsm            1/1     Running             6          5d23h
+kube-system   kube-apiserver-node1                       1/1     Running             7          5d23h
+kube-system   kube-controller-manager-node1              1/1     Running             7          5d23h
+kube-system   kube-proxy-lbqp6                           1/1     Running             7          5d23h
+kube-system   kube-scheduler-node1                       1/1     Running             7          5d23h
+kube-system   nodelocaldns-cfp6v                         1/1     Running             7          5d23h
+policy-demo   nginx-6799fc88d8-qw9h5                     1/1     Running             0          3h16m
+```
