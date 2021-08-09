@@ -1,7 +1,7 @@
 ## Решение
-### Подготовить тестовый конфиг для запуска приложения
+### 1. Подготовить тестовый конфиг для запуска приложения
 #### Фронтэнд
-kubectl create -f [stage.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B,%20%D0%BF%D0%BE%D0%B4%D1%8B,%20deployment,%20statefulset,%20services,%20endpoints/stage.yaml)
+kubectl apply -f [stage.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B,%20%D0%BF%D0%BE%D0%B4%D1%8B,%20deployment,%20statefulset,%20services,%20endpoints/stage.yaml)
 ```
 root@node1:~/kubespray# kubectl describe deployment front-back
 Name:                   front-back
@@ -88,3 +88,11 @@ Events:
   Normal  SuccessfulCreate  2m48s  statefulset-controller  create Claim nfs-pv-postgresql-db-0 Pod postgresql-db-0 in StatefulSet postgresql-db success
   Normal  SuccessfulCreate  2m48s  statefulset-controller  create Pod postgresql-db-0 in StatefulSet postgresql-db successful
 ```
+### 2. Конфиг для production окружения
+[Статья](https://humanitec.com/blog/deploy-with-kubectl-hands-on-with-kubernetes) в основе выполнения задания
+#### Фронтэнд
+kubectl apply -f [front.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/front.yaml)
+#### Бэкэнд
+kubectl apply -f [back.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/back.yaml)
+#### БД
+kubectl apply -f [postgresql_prod.yaml](https://github.com/loshkarevev/Homeworks/blob/main/13.1%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%B9%D0%BD%D0%B5%D1%80%D1%8B%2C%20%D0%BF%D0%BE%D0%B4%D1%8B%2C%20deployment%2C%20statefulset%2C%20services%2C%20endpoints/postgresql_prod.yaml)
