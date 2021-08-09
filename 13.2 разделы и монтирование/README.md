@@ -14,7 +14,7 @@ kind: PersistentVolumeClaim
           storage: 100Mi
 ```
 ### Задание 1: подключить для тестового конфига общую папку
-Взял [пример](https://github.com/loshkarevev/Homeworks/tree/main/13.2%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8B%20%D0%B8%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5) из лекции. Можно было взять с [сайта](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/).
+Взял [пример](https://github.com/loshkarevev/Homeworks/blob/main/13.2%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8B%20%D0%B8%20%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/pod-int-volumes.yaml) из лекции. Можно было взять с [сайта](https://kubernetes.io/docs/tasks/access-application-cluster/communicate-containers-same-pod-shared-volume/).
 
 Выполнил kubectl apply -f pod-int-volumes.yaml
 
