@@ -88,6 +88,31 @@ Events:
   Normal  SuccessfulCreate  2m48s  statefulset-controller  create Claim nfs-pv-postgresql-db-0 Pod postgresql-db-0 in StatefulSet postgresql-db success
   Normal  SuccessfulCreate  2m48s  statefulset-controller  create Pod postgresql-db-0 in StatefulSet postgresql-db successful
 ```
+```
+root@node1:~/kubespray# kubectl get pv
+NAME     CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                            STORAGECLASS   REASON   AGE
+nfs-pv   5Gi        RWX            Retain           Bound    default/nfs-pv-postgresql-db-0                           36m
+root@node1:~/kubespray# kubectl get pvc
+NAME                     STATUS   VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+nfs-pv-postgresql-db-0   Bound    nfs-pv   5Gi        RWX                           35m
+root@node1:~/kubespray# kubectl get po --all-namespaces
+NAMESPACE     NAME                                       READY   STATUS              RESTARTS   AGE
+default       front-back-5b8f5b9c5b-98x5t                2/2     Running             0          43m
+default       nginx-deployment-66b6c48dd5-fm7wp          1/1     Running             0          49m
+default       postgresql-db-0                            0/1     ContainerCreating   0          35m
+kube-system   calico-kube-controllers-5b4d7b4594-bjsn2   0/1     Shutdown            0          5d22h
+kube-system   calico-kube-controllers-5b4d7b4594-r9kq8   1/1     Running             5          23h
+kube-system   calico-node-vvcc5                          1/1     Running             125        5d22h
+kube-system   coredns-8474476ff8-dkbdn                   1/1     Running             6          5d22h
+kube-system   coredns-8474476ff8-x762p                   0/1     Pending             0          5d22h
+kube-system   dns-autoscaler-7df78bfcfb-87bsm            1/1     Running             6          5d22h
+kube-system   kube-apiserver-node1                       1/1     Running             7          5d22h
+kube-system   kube-controller-manager-node1              1/1     Running             7          5d22h
+kube-system   kube-proxy-lbqp6                           1/1     Running             7          5d22h
+kube-system   kube-scheduler-node1                       1/1     Running             7          5d22h
+kube-system   nodelocaldns-cfp6v                         1/1     Running             7          5d22h
+policy-demo   nginx-6799fc88d8-qw9h5                     1/1     Running             0          104m
+```
 ### 2. Конфиг для production окружения
 [Статья](https://humanitec.com/blog/deploy-with-kubectl-hands-on-with-kubernetes) в основе выполнения задания
 #### Фронтэнд
