@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: product-fe
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: ecommerce
+            tier: frontend
+    template:
+        metadata:
+            labels:
+                app: ecommerce
+                tier: frontend
+        spec:
+          containers:
+          - name: client
+            image: chrischinchilla/humanitech-product-fe
+            imagePullPolicy: "IfNotPresent"
+            ports:
+            - name: http
+              containerPort: 8080
+            env:
+            - name: PRODUCT_BE_SERVER_URL
+              value: product-be
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: product-fe
+spec:
+    type: NodePort
+    ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+    selector:
+        app: ecommerce
+        tier: frontend
