@@ -66,6 +66,7 @@ kube-system   kube-scheduler-node1                       1/1     Running        
 kube-system   nodelocaldns-cfp6v                         1/1     Running            9          9d
 policy-demo   nginx-6799fc88d8-qw9h5                     1/1     Running            2          3d7h
 ```
+Пишем файл в бэке, читаем во фронте:
 ```
 root@node1:~/kubespray# kubectl exec product-be2-6db8586945-n5zfm -c product-be2 -- ls -la /mnt/nfs
 total 8
