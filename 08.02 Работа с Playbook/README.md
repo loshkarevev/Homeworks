@@ -189,3 +189,4 @@ kibana001                  : ok=9    changed=0    unreachable=0    failed=0    s
 распаковка в рабочий каталог из пакета
 создание по шаблону переменных окружений (templates)
 #### 10. Готовый playbook выложите в свой репозиторий, в ответ предоставьте ссылку на него
+https://github.com/loshkarevev/Homeworks/tree/main/08.02%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Playbook
