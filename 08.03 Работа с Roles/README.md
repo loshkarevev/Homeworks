@@ -187,8 +187,6 @@ INFO     Pruning extra files from scenario ephemeral directory
 ```
 #### 6. На основе tasks из старого playbook заполните новую role. Разнесите переменные между vars и default. Проведите тестирование на разных дистрибитивах (centos:7, centos:8, ubuntu)
 Done
-#### 7. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию
-
 #### 8. Добавьте roles в requirements.yml в playbook
 Done
 #### 9. 
@@ -259,5 +257,7 @@ PLAY RECAP *********************************************************************
 elastic001                 : ok=10   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 kibana001                  : ok=10   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
 ```
+#### 7. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию
 #### 9. Выложите playbook в репозиторий
 #### 10. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook
+https://github.com/loshkarevev/Homeworks/tree/main/08.03%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Roles
