@@ -260,4 +260,6 @@ kibana001                  : ok=10   changed=8    unreachable=0    failed=0    s
 #### 7. Выложите все roles в репозитории. Проставьте тэги, используя семантическую нумерацию
 #### 9. Выложите playbook в репозиторий
 #### 10. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook
-https://github.com/loshkarevev/Homeworks/tree/main/08.03%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Roles
+https://github.com/loshkarevev/Homeworks/tree/main/08.03%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Roles/elastic-role
+https://github.com/loshkarevev/Homeworks/tree/main/08.03%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Roles/kibana-role
+https://github.com/loshkarevev/Homeworks/tree/main/08.03%20%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D1%81%20Roles/playbook
