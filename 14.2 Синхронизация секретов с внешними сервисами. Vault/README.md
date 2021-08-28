@@ -4,7 +4,7 @@ root@vagrant:~# mkdir 14.2
 root@vagrant:~# cd 14.2/
 root@vagrant:~/14.2# nano vault-pod.yml
 root@vagrant:~/14.2# cd ..
-root@vagrant:~/14.2# kubectl apply -f 14.2/vault-pod.yml
+root@vagrant:~# kubectl apply -f 14.2/vault-pod.yml
 pod/14.2-netology-vault created
 ```
 ##### Получить значение внутреннего IP пода
